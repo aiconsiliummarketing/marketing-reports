@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>차액가맹금 데일리 리포트 2026.03.30</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', system-ui, sans-serif; color: #1E293B; background: #fff; font-size: 9pt; line-height: 1.55; }
+
+/* Cover */
+.cover { min-height: 100vh; background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); color: #fff; padding: 60px 40px 40px; display: flex; flex-direction: column; justify-content: center; }
+.cover .tag { display: inline-block; background: rgba(123,104,174,0.2); padding: 4px 14px; border-radius: 12px; font-size: 7pt; color: #94A3B8; letter-spacing: 0.5px; margin-bottom: 16px; }
+.cover .badge { display: inline-block; background: #7B68AE; color: #fff; font-size: 7.5pt; padding: 4px 14px; border-radius: 12px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+.cover h1 { font-size: 32pt; font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
+.cover .subtitle { font-size: 13pt; color: #94A3B8; font-weight: 300; margin-bottom: 20px; }
+.cover .divider { width: 40px; height: 2px; background: #7B68AE; margin: 20px 0 30px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 30px 0; }
+.kpi-card { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 18px 16px; border-left: 3px solid #7B68AE; }
+.kpi-card .label { font-size: 7pt; color: #94A3B8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.kpi-card .value { font-size: 22pt; font-weight: 700; }
+.kpi-card .change { font-size: 7.5pt; margin-top: 4px; }
+.cover .meta-info { font-size: 7.5pt; color: #475569; line-height: 1.8; margin-top: 30px; }
+
+/* Content */
+.content { max-width: 900px; margin: 0 auto; padding: 40px; }
+.section { margin-bottom: 30px; page-break-inside: avoid; }
+.sh { background: #1E293B; border-radius: 6px; padding: 10px 16px; margin: 24px 0 14px; display: flex; align-items: center; gap: 10px; }
+.sh .num { background: #7B68AE; color: #fff; font-size: 8pt; font-weight: 700; padding: 3px 10px; border-radius: 4px; }
+.sh .title { font-size: 11pt; font-weight: 700; color: #fff; }
+.insight { border-left: 3px solid #7B68AE; background: #F8F7FC; padding: 14px 18px; margin: 10px 0; border-radius: 0 6px 6px 0; font-size: 9pt; line-height: 1.7; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 8pt; margin: 10px 0; }
+th { background: #1E293B; color: #fff; padding: 8px 10px; font-weight: 600; font-size: 7.5pt; text-align: center; }
+td { padding: 7px 10px; border-bottom: 1px solid #E2E8F0; text-align: center; }
+tr:nth-child(even) td { background: #F8FAFC; }
+.gt td { background: #1E293B !important; color: #fff; font-weight: 700; }
+.sub-gt td { background: #F1F5F9 !important; font-weight: 600; }
+td.l { text-align: left; }
+.up { color: #DC2626; font-weight: 600; }
+.dn { color: #2563EB; font-weight: 600; }
+.gn { color: #16A34A; }
+
+/* Tags */
+.tag-p1 { display: inline-block; background: #FEE2E2; color: #DC2626; padding: 2px 10px; border-radius: 12px; font-size: 7pt; font-weight: 700; }
+.tag-p2 { display: inline-block; background: #FEF3C7; color: #D97706; padding: 2px 10px; border-radius: 12px; font-size: 7pt; font-weight: 700; }
+.action-item { margin: 8px 0; }
+.action-item .title { font-weight: 700; font-size: 9pt; }
+.action-item .desc { font-size: 8pt; color: #475569; margin-top: 2px; }
+
+/* Warning */
+.warn { background: #FFFBEB; border-left: 3px solid #F59E0B; padding: 12px 16px; margin: 14px 0; border-radius: 0 6px 6px 0; font-size: 8pt; }
+.warn .warn-title { font-weight: 700; color: #D97706; font-size: 8.5pt; margin-bottom: 4px; }
+
+/* Footer */
+.footer { margin-top: 40px; padding-top: 12px; border-top: 1px solid #E2E8F0; font-size: 7pt; color: #94A3B8; text-align: center; }
+
+/* KPI body cards */
+.kpi-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+.kpi-b { background: #1E293B; border-radius: 8px; padding: 12px 14px; }
+.kpi-b .lb { font-size: 7pt; color: #94A3B8; }
+.kpi-b .vl { font-size: 16pt; font-weight: 700; color: #fff; }
+.kpi-b .ch { font-size: 7.5pt; }
+
+/* Channel headers */
+.ch-meta { display: inline-block; background: #7B68AE; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 8.5pt; font-weight: 700; margin: 14px 0 8px; }
+.ch-naver { display: inline-block; background: #16A34A; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 8.5pt; font-weight: 700; margin: 14px 0 8px; }
+.ch-karrot { display: inline-block; background: #EA580C; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 8.5pt; font-weight: 700; margin: 14px 0 8px; }
+
+@media print { .cover { min-height: auto; page-break-after: always; } }
+</style>
+</head>
+<body>
+
+<!-- 커버 페이지 -->
+<div class="cover">
+  <div class="tag">차액가맹금 통합 워크플로우 v2.1</div>
+  <div class="badge">DAILY REPORT</div>
+  <h1>차액가맹금 집단소송<br>마케팅 데일리 리포트</h1>
+  <div class="subtitle">2026.03.30 (월)</div>
+  <div class="divider"></div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="label">당일 광고비</div>
+      <div class="value">235,317</div>
+      <div class="change up">▲ 1.9% vs 전일</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">당일 클릭</div>
+      <div class="value">960</div>
+      <div class="change up">▲ 2.2% vs 전일</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">CTR</div>
+      <div class="value">3.90%</div>
+      <div class="change" style="color:#94A3B8">— vs 전일</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">전환수</div>
+      <div class="value">5건</div>
+      <div class="change up">▲ 400% vs 전일</div>
+    </div>
+  </div>
+  <div class="meta-info">
+    분석 날짜: 2026.03.30 (월) | 데이터 소스: Google Analytics, Meta Ads, Naver SA<br>
+    작성: 에이아이컨실리움 | STEP 1 ✅ STEP 2 ✅ STEP 3 ✅
+  </div>
+</div>
+
+<!-- 본문 -->
+<div class="content">
+
+<!-- D1 -->
+<div class="section">
+  <div class="sh"><span class="num">D1</span><span class="title">오늘의 핵심 요약 — 메타 리드폼 4건, 전환 5건 달성</span></div>
+  <div class="insight">
+    <strong>종합 평가:</strong> 메타 광고비 230,081원으로 안정적 집행. 리드폼 전환 4건 달성(결과당비용 57,520원)으로 전일 대비 효율 대폭 개선. GA 전환 1건 추가 발생. 폼유입 20건(전일 9건 대비 ▲122%)으로 유입 증가세 확인.<br><br>
+    <strong>주의사항:</strong> 폼유입 20건 급증의 원인 분석 필요 — 쿠팡 혼입 가능성 점검. 네이버SA 전환 0건 지속.
+  </div>
+</div>
+
+<!-- D2 -->
+<div class="section">
+  <div class="sh"><span class="num">D2</span><span class="title">당일 KPI 스냅샷</span></div>
+  <div class="kpi-body">
+    <div class="kpi-b"><div class="lb">광고비</div><div class="vl">235,317</div><div class="ch up">▲ 1.9%</div></div>
+    <div class="kpi-b"><div class="lb">노출</div><div class="vl">24,625</div><div class="ch up">▲ 2.3%</div></div>
+    <div class="kpi-b"><div class="lb">클릭</div><div class="vl">960</div><div class="ch up">▲ 2.2%</div></div>
+    <div class="kpi-b"><div class="lb">CTR</div><div class="vl">3.90%</div><div class="ch" style="color:#94A3B8">—</div></div>
+    <div class="kpi-b"><div class="lb">CPC</div><div class="vl">245</div><div class="ch dn">▼ 0.3%</div></div>
+    <div class="kpi-b"><div class="lb">전환수</div><div class="vl">5건</div><div class="ch up">▲ 400%</div></div>
+  </div>
+  <table>
+    <tr><th>지표</th><th>당일 (3/30)</th><th>전일 (3/29)</th><th>전일대비</th><th>누적</th></tr>
+    <tr><td class="l"><strong>광고비</strong></td><td>235,317</td><td>230,930</td><td class="up">▲ 1.9%</td><td>7,169,513</td></tr>
+    <tr><td class="l"><strong>노출</strong></td><td>24,625</td><td>24,078</td><td class="up">▲ 2.3%</td><td>1,404,367</td></tr>
+    <tr><td class="l"><strong>클릭</strong></td><td>960</td><td>939</td><td class="up">▲ 2.2%</td><td>22,353</td></tr>
+    <tr><td class="l"><strong>CTR</strong></td><td>3.90%</td><td>3.90%</td><td>—</td><td>1.59%</td></tr>
+    <tr><td class="l"><strong>CPC</strong></td><td>245</td><td>246</td><td class="dn">▼ 0.3%</td><td>321</td></tr>
+    <tr><td class="l"><strong>전환수</strong></td><td>5</td><td>1</td><td class="up">▲ 400.0%</td><td>61</td></tr>
+    <tr><td class="l"><strong>결과당비용</strong></td><td>47,063</td><td>230,930</td><td class="dn">▼ 79.6%</td><td>117,533</td></tr>
+    <tr><td class="l"><strong>폼유입</strong></td><td>20</td><td>9</td><td class="up">▲ 122.2%</td><td>55</td></tr>
+  </table>
+  <p style="font-size:7pt;color:#94A3B8;">※ 전환수: 쿠팡 소스 제외. 차액가맹금 CRM 포함. 당근 3/20~ 광고 중단.</p>
+</div>
+
+<!-- D3 -->
+<div class="section">
+  <div class="sh"><span class="num">D3</span><span class="title">채널별 당일 성과</span></div>
+  <table>
+    <tr><th>채널</th><th>광고비</th><th>비중</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>전환</th><th>결과당비용</th></tr>
+    <tr><td class="l"><strong>메타</strong></td><td>230,081</td><td>97.8%</td><td>23,992</td><td>957</td><td>3.99%</td><td>240</td><td>5</td><td>46,016</td></tr>
+    <tr><td class="l"><strong>네이버SA</strong></td><td>5,236</td><td>2.2%</td><td>633</td><td>3</td><td>0.47%</td><td>1,745</td><td>0</td><td>—</td></tr>
+    <tr><td class="l"><strong>당근</strong></td><td colspan="8" style="color:#94A3B8;text-align:center;">광고 중단 (3/20~)</td></tr>
+    <tr class="sub-gt"><td class="l">합계</td><td>235,317</td><td>100%</td><td>24,625</td><td>960</td><td>3.90%</td><td>245</td><td>5</td><td>47,063</td></tr>
+  </table>
+  <div class="insight">
+    <strong>메타:</strong> CTR 3.99%로 양호. 리드폼 4건 + GA 전환 1건 = 총 5건. 결과당비용 46,016원. 전일 대비 전환 5배 증가.<br>
+    <strong>네이버SA:</strong> 클릭 3건으로 모수 부족. 전환 0건. 소규모 집행 유지 중.
+  </div>
+</div>
+
+<!-- D8 -->
+<div class="section">
+  <div class="sh"><span class="num">D8</span><span class="title">당일 인사이트 & 액션</span></div>
+  <div class="insight">
+    <strong>1. 메타 리드폼 전환 4건 — 결과당비용 57,520원으로 전일 대비 대폭 개선.</strong> 리드폼 중심 전략의 유효성 재확인. closed_leadform 소재가 핵심 기여.
+  </div>
+  <div class="insight">
+    <strong>2. 폼유입 20건 급증 (전일 9건 대비 ▲122%)</strong> — 전환율 개선 신호. 다만 쿠팡 혼입 가능성 점검 필요. GA 소스별 form_start 분포 확인 요.
+  </div>
+  <br>
+  <div class="action-item">
+    <span class="tag-p1">P1 즉시</span>
+    <div class="title">margin_leadform 소재 중단</div>
+    <div class="desc">7주차 전환 0건 지속. 해당 예산을 closed_leadform으로 재배분. 근거: 결과당비용 무한대 vs closed_leadform 57,520원.</div>
+  </div>
+  <div class="action-item">
+    <span class="tag-p2">P2 내일</span>
+    <div class="title">폼유입 20건 급증 원인 분석</div>
+    <div class="desc">쿠팡 혼입 여부 확인. GA 소스별 form_start 분포 점검. 정상 유입이면 전환율 개선 추세로 판단.</div>
+  </div>
+</div>
+
+<!-- 경고 박스 -->
+<div class="warn">
+  <div class="warn-title">데이터 주의사항</div>
+  1. 당근광고 3/20~ 중단 — 데이터 없음<br>
+  2. 쿠팡 소스(home/popup_coupang) 전환 제외 처리<br>
+  3. 차액가맹금 CRM(utm_medium=crm_at_franchise) 전환 포함<br>
+  4. 전환수 모수 극소(일 10건 미만) — 통계적 유의성 제한
+</div>
+
+<div class="footer">
+  에이아이컨실리움 | 법무법인 더 에이치 황해 — CONFIDENTIAL | 작성일 2026-03-31
+</div>
+
+</div>
+</body>
+</html>
