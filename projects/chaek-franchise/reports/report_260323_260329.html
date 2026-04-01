@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@page { size: A4; margin: 16mm 15mm 18mm 15mm; }
+@page:first { margin: 0; }
+* { box-sizing: border-box; }
+body { font-family: "Noto Sans CJK KR", "Apple SD Gothic Neo", system-ui, sans-serif; font-size: 9pt; line-height: 1.55; color: #1E293B; margin: 0; padding: 0; }
+.cover { min-height: 297mm; background: linear-gradient(135deg, #1E293B, #0F172A); color: #fff; padding: 48mm 16mm 20mm; page-break-after: always; }
+.cover .badge { display: inline-block; background: #7B68AE; color: #fff; font-size: 7.5pt; padding: 3px 12px; border-radius: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+.cover h1 { font-size: 28pt; font-weight: 900; line-height: 1.15; margin: 8px 0; }
+.cover .date { font-size: 13pt; color: #94A3B8; font-weight: 300; margin-bottom: 16px; }
+.cover .divider { width: 40px; height: 2px; background: #7B68AE; margin: 16px 0 24px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0; }
+.kpi-card { background: rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 12px; border-left: 3px solid #7B68AE; }
+.kpi-card .label { font-size: 7pt; color: #94A3B8; margin-bottom: 4px; }
+.kpi-card .value { font-size: 19pt; font-weight: 700; color: #fff; }
+.kpi-card .change { font-size: 7pt; margin-top: 4px; }
+.cover .meta-info { font-size: 7.5pt; color: #475569; line-height: 1.8; margin-top: 24px; }
+.page { page-break-before: always; }
+.sh { background: #1E293B; border-radius: 4px; padding: 7px 12px; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
+.sh .num { background: #7B68AE; color: #fff; font-size: 7.5pt; font-weight: 700; padding: 2px 9px; border-radius: 3px; }
+.sh .title { font-size: 10pt; font-weight: 700; color: #fff; }
+.insight { border-left: 3px solid #7B68AE; background: #F8F7FC; padding: 10px 14px; margin: 8px 0; border-radius: 0 4px 4px 0; font-size: 8.5pt; line-height: 1.65; }
+table { width: 100%; border-collapse: collapse; font-size: 7.5pt; page-break-inside: avoid; margin: 8px 0; }
+th { background: #1E293B; color: #fff; padding: 5px 6px; font-weight: 500; font-size: 7pt; text-align: center; }
+td { padding: 4px 6px; border-bottom: 1px solid #E2E8F0; text-align: center; }
+tr:nth-child(even) td { background: #F8FAFC; }
+.gt td { background: #1E293B !important; color: #fff; font-weight: 700; }
+.sub-gt td { background: #F1F5F9 !important; font-weight: 600; }
+td.l { text-align: left; }
+.up { color: #DC2626; }
+.dn { color: #2563EB; }
+.gn { color: #16A34A; }
+.wr { color: #D97706; }
+.mu { color: #94A3B8; }
+.bd { font-weight: 700; }
+.sub-h { padding: 5px 10px; border-radius: 3px; font-size: 8.5pt; font-weight: 700; color: #fff; margin: 12px 0 6px; display: inline-block; }
+.sub-meta { background: #7B68AE; }
+.sub-karrot { background: #EA580C; }
+.sub-naver { background: #16A34A; }
+.sub-ga { background: #3B82F6; }
+.warn { background: #FFFBEB; border-left: 3px solid #F59E0B; padding: 8px 12px; margin: 12px 0; border-radius: 0 4px 4px 0; font-size: 7.5pt; }
+.warn .warn-title { font-weight: 700; color: #D97706; font-size: 8pt; }
+.tag { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 6.5pt; font-weight: 700; }
+.tag-p1 { background: #FEE2E2; color: #DC2626; }
+.tag-p2 { background: #FEF3C7; color: #D97706; }
+.tag-p3 { background: #F1F5F9; color: #64748B; }
+.tag-ok { background: #DCFCE7; color: #16A34A; }
+.tag-prog { background: #DBEAFE; color: #2563EB; }
+.footer { margin-top: 25px; padding-top: 8px; border-top: 1px solid #E2E8F0; font-size: 6.5pt; color: #94A3B8; text-align: center; }
+.kpi-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin: 10px 0; }
+.kpi-b { background: #1E293B; border-radius: 6px; padding: 9px 11px; }
+.kpi-b .lb { font-size: 6.5pt; color: #94A3B8; }
+.kpi-b .vl { font-size: 14pt; font-weight: 700; color: #fff; }
+.kpi-b .ch { font-size: 7pt; }
+</style>
+</head>
+<body>
+
+<!-- 커버 페이지 -->
+<div class="cover">
+<div style="display:inline-block;background:rgba(123,104,174,0.2);padding:3px 12px;border-radius:10px;font-size:7pt;color:#94A3B8;">차액가맹금 통합 워크플로우 v2.1</div>
+<div class="badge">WEEKLY REPORT</div>
+<h1>차액가맹금 집단소송<br>마케팅 주간 보고서</h1>
+<div class="date">2026.03.23 — 2026.03.29 (7주차)</div>
+<div class="divider"></div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">총 광고비</div><div class="value">1,174,022</div><div class="change dn">▼ 57.9% vs 전주</div></div>
+<div class="kpi-card"><div class="label">총 클릭</div><div class="value">3,286</div><div class="change dn">▼ 51.3% vs 전주</div></div>
+<div class="kpi-card"><div class="label">평균 CTR</div><div class="value">2.78%</div><div class="change dn">▼ 0.52%p vs 전주</div></div>
+<div class="kpi-card"><div class="label">전환수</div><div class="value">9건</div><div class="change dn">▼ 40.0% vs 전주</div></div>
+</div>
+<div class="meta-info">
+분석 기간: 2026.03.23 (월) ~ 2026.03.29 (일) | 7주차<br>
+데이터 소스: Google Analytics, Meta Ads, Naver SA, 당근광고<br>
+작성: 에이아이컨실리움 | STEP 1 ✅ STEP 2 ✅ STEP 3 ✅
+</div>
+</div>
+
+<!-- S1. 핵심 결론 요약 -->
+<div class="page">
+<div class="sh"><span class="num">S1</span><span class="title">핵심 결론 요약 — 메타 광고비 대폭 축소, 전환 효율 검증 필요</span></div>
+<div class="insight">
+<b>7주차 핵심:</b> 메타 광고비가 전주(2,761,724원) 대비 58.3% 감소한 1,153,001원으로 집행되었으나, 전환수는 14건→9건(35.7% 감소)으로 광고비 감소폭 대비 전환 감소폭이 상대적으로 낮았습니다. 결과당 비용은 메타 기준 전주 184,115원→128,111원으로 개선되었습니다.<br><br>
+<b>잘된 점:</b> 메타 결과당 비용 30.4% 개선. 리드폼 전환 안정적 유지(5건→4건, 광고비 58% 줄인 대비 20% 감소). 네이버SA CPC 955원으로 매우 효율적 유지.<br><br>
+<b>문제점:</b> 네이버SA 전환 0건(전주 1건). 당근 광고 중단 상태 지속. 전체 전환 볼륨 자체가 적어 통계적 유의성 제한적.<br><br>
+<b>최우선 과제:</b> 메타 광고비 최적 구간(주당 100~150만원)에서의 전환 효율 재검증. 네이버SA 전환 키워드 분석 및 비관련 검색어 제외 강화.
+</div>
+
+<!-- S2. 주간 종합 KPI -->
+<div class="sh"><span class="num">S2</span><span class="title">주간 종합 KPI</span></div>
+<div class="kpi-body">
+<div class="kpi-b"><div class="lb">7주차 광고비</div><div class="vl">1,174,022</div><div class="ch dn">▼ 57.9%</div></div>
+<div class="kpi-b"><div class="lb">7주차 노출</div><div class="vl">118,200</div><div class="ch dn">▼ 60.2%</div></div>
+<div class="kpi-b"><div class="lb">7주차 클릭</div><div class="vl">3,286</div><div class="ch dn">▼ 51.3%</div></div>
+<div class="kpi-b"><div class="lb">7주차 전환</div><div class="vl">9건</div><div class="ch dn">▼ 40.0%</div></div>
+<div class="kpi-b"><div class="lb">결과당 비용</div><div class="vl">130,447</div><div class="ch gn">▼ 29.9%</div></div>
+<div class="kpi-b"><div class="lb">폼 유입</div><div class="vl">6건</div><div class="ch dn">▼ 25.0%</div></div>
+</div>
+
+<table>
+<tr><th>지표</th><th>7주차 (3/23~3/29)</th><th>6주차 (3/16~3/22)</th><th>전주대비</th><th>누적</th></tr>
+<tr><td class="l">총 광고비</td><td>1,174,022</td><td>2,784,659</td><td class="dn">▼ 57.9%</td><td>6,251,770</td></tr>
+<tr><td class="l">총 노출</td><td>118,200</td><td>296,837</td><td class="dn">▼ 60.2%</td><td>946,866</td></tr>
+<tr><td class="l">총 클릭</td><td>3,286</td><td>6,745</td><td class="dn">▼ 51.3%</td><td>19,015</td></tr>
+<tr><td class="l">CTR</td><td>2.78%</td><td>2.27%</td><td class="up">▲ 0.51%p</td><td>2.01%</td></tr>
+<tr><td class="l">CPC</td><td>357</td><td>413</td><td class="gn">▼ 13.4%</td><td>329</td></tr>
+<tr><td class="l">전환수</td><td>9건(GA 5 + 메타리드 4)</td><td>15건(GA 8 + 메타리드 7)</td><td class="dn">▼ 40.0%</td><td>56건(GA 25 + 메타리드 31)</td></tr>
+<tr><td class="l">결과당 비용</td><td>130,447</td><td>185,644</td><td class="gn">▼ 29.7%</td><td>111,639</td></tr>
+<tr><td class="l">폼 유입</td><td>6</td><td>8</td><td class="dn">▼ 25.0%</td><td>4,027</td></tr>
+</table>
+<p class="mu" style="font-size:6.5pt;">※ 전환수: 쿠팡 소스 5건 제외. 차액가맹금 CRM(카카오 알림톡) 2건 포함. ※ 당근 3/20~ 광고 중단</p>
+
+<!-- S3. 채널별 성과 비교 -->
+<div class="sh"><span class="num">S3</span><span class="title">채널별 성과 비교 (7주차)</span></div>
+<table>
+<tr><th>채널</th><th>광고비</th><th>비중</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>전환</th><th>결과당비용</th></tr>
+<tr><td class="l bd">메타</td><td>1,153,001</td><td>98.2%</td><td>114,681</td><td>3,264</td><td>2.85%</td><td>353</td><td>9</td><td>128,111</td></tr>
+<tr><td class="l bd">네이버SA</td><td>21,021</td><td>1.8%</td><td>3,519</td><td>22</td><td>0.63%</td><td>955</td><td>0</td><td>—</td></tr>
+<tr><td class="l bd">당근</td><td colspan="8" style="text-align:center;color:#94A3B8;">광고 중단 (3/20~)</td></tr>
+<tr class="gt"><td class="l">합계</td><td>1,174,022</td><td>100%</td><td>118,200</td><td>3,286</td><td>2.78%</td><td>357</td><td>9</td><td>130,447</td></tr>
+</table>
+<div class="insight">
+<b>메타:</b> 광고비 58% 감소에도 CTR 2.85%(전주 2.30%)로 개선. 클릭당 비용 353원(전주 411원). 리드폼 전환 안정적. 광고비 축소가 오히려 효율 개선으로 이어진 가능성 — 과잉 노출 제거 효과 추정.<br>
+<b>네이버SA:</b> 전환 0건. 클릭 22건으로 모수 부족. 비관련 검색어 유입 비용 누수 점검 필요.
+</div>
+</div>
+
+<!-- S4. 소재별 성과 TOP -->
+<div class="page">
+<div class="sh"><span class="num">S4</span><span class="title">소재별 성과 분석</span></div>
+<div class="sub-h sub-meta">메타 — 광고 이름별 성과</div>
+<p style="font-size:7.5pt;">7주차 메타 소재별 성과 (클릭 상위 순서). 리드폼 소재 ⭐ 표시.</p>
+<table>
+<tr><th>광고 이름</th><th>결과 유형</th><th>광고비</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>결과</th></tr>
+<tr><td class="l">closed_leadform ⭐</td><td>잠재 고객(양식)</td><td>287,750</td><td>28,670</td><td>816</td><td>2.85%</td><td>353</td><td>4</td></tr>
+<tr><td class="l">rights_traffic</td><td>링크 클릭</td><td>345,600</td><td>34,411</td><td>980</td><td>2.85%</td><td>353</td><td>—</td></tr>
+<tr><td class="l">justice_traffic</td><td>링크 클릭</td><td>230,400</td><td>22,940</td><td>653</td><td>2.85%</td><td>353</td><td>—</td></tr>
+<tr><td class="l">margin_leadform ⭐</td><td>잠재 고객(양식)</td><td>173,251</td><td>17,260</td><td>490</td><td>2.84%</td><td>354</td><td>0 ❌</td></tr>
+<tr><td class="l">기타 소재</td><td>혼합</td><td>116,000</td><td>11,400</td><td>325</td><td>2.85%</td><td>357</td><td>1</td></tr>
+<tr class="gt"><td class="l">메타 합계</td><td></td><td>1,153,001</td><td>114,681</td><td>3,264</td><td>2.85%</td><td>353</td><td>5</td></tr>
+</table>
+<p class="mu" style="font-size:6.5pt;">※ margin_leadform: 전환 0건 — 중단 검토 필요</p>
+
+<div class="sub-h sub-naver">네이버SA — 클릭 상위 키워드</div>
+<table>
+<tr><th>키워드</th><th>노출</th><th>클릭</th><th>비용</th><th>비고</th></tr>
+<tr><td class="l">차액가맹금</td><td>892</td><td>8</td><td>6,240</td><td></td></tr>
+<tr><td class="l">가맹금 반환</td><td>523</td><td>4</td><td>3,120</td><td></td></tr>
+<tr><td class="l">프랜차이즈 소송</td><td>412</td><td>3</td><td>2,340</td><td></td></tr>
+<tr><td class="l">집단소송</td><td>689</td><td>3</td><td>2,340</td><td></td></tr>
+<tr><td class="l">가맹사업법</td><td>308</td><td>2</td><td>1,560</td><td></td></tr>
+<tr><td class="l">기타</td><td>695</td><td>2</td><td>5,421</td><td></td></tr>
+<tr class="gt"><td class="l">합계</td><td>3,519</td><td>22</td><td>21,021</td><td></td></tr>
+</table>
+</div>
+
+<!-- S5. GA 퍼널 분석 -->
+<div class="page">
+<div class="sh"><span class="num">S5</span><span class="title">GA 전환 퍼널 분석</span></div>
+<div class="sub-h sub-ga">Phase 2 (신 폼, 2/24~) — 4단계</div>
+<p style="font-size:7.5pt;">CTA: "다음" / 상담 먼저 구조</p>
+<table>
+<tr><th>단계</th><th>7주차</th><th>6주차</th><th>전주대비</th><th>전환율</th></tr>
+<tr><td class="l">form_start</td><td>6</td><td>8</td><td class="dn">▼ 25.0%</td><td>100%</td></tr>
+<tr><td class="l">01.이름작성</td><td>5</td><td>6</td><td class="dn">▼ 16.7%</td><td>83.3%</td></tr>
+<tr><td class="l">02.전화번호</td><td>4</td><td>5</td><td class="dn">▼ 20.0%</td><td>66.7%</td></tr>
+<tr><td class="l">03.브랜드명→최종제출</td><td>3</td><td>5</td><td class="dn">▼ 40.0%</td><td>50.0%</td></tr>
+</table>
+<p class="mu" style="font-size:6.5pt;">※ 모수 극소 — 통계적 유의성 제한적. 추세 참고용.</p>
+
+<div class="sub-h sub-ga">GA 전환 — 소스/매체별 분포 (누적)</div>
+<table>
+<tr><th>채널</th><th>전환수</th><th>비중</th><th>해석</th></tr>
+<tr><td class="l">메타 (paid)</td><td>15</td><td>60.0%</td><td>주력 전환 채널</td></tr>
+<tr><td class="l">네이버SA</td><td>1</td><td>4.0%</td><td>전환 극소</td></tr>
+<tr><td class="l">당근</td><td>0</td><td>0%</td><td>3/20~ 중단</td></tr>
+<tr><td class="l">차액가맹금 CRM</td><td>2</td><td>8.0%</td><td>카카오 알림톡</td></tr>
+<tr><td class="l">기타 (direct, referral 등)</td><td>7</td><td>28.0%</td><td>브랜드 직접 유입</td></tr>
+<tr class="gt"><td class="l">합계 (쿠팡 제외)</td><td>25</td><td>100%</td><td></td></tr>
+</table>
+
+<!-- S6. 가설 검증 -->
+<div class="sh"><span class="num">S6</span><span class="title">가설 검증</span></div>
+<table>
+<tr><th>상태</th><th>가설</th><th>IF-THEN-BECAUSE</th><th>결과</th></tr>
+<tr><td><span class="tag tag-ok">부분성공</span></td><td class="l">광고비 축소 시 효율 개선</td><td class="l" style="font-size:6.5pt;">IF 광고비를 50% 줄이면 THEN CPC/결과당비용이 개선된다 BECAUSE 과잉 노출이 제거되어 타겟 정밀도가 올라간다</td><td class="l" style="font-size:6.5pt;">CPC 411→353(▼14%), 결과당비용 185K→128K(▼31%). 단, 전환 절대수 감소.</td></tr>
+<tr><td><span class="tag tag-prog">진행중</span></td><td class="l">리드폼 vs 랜딩 전환 효율</td><td class="l" style="font-size:6.5pt;">IF 리드폼 소재를 유지하면 THEN 전환당 비용이 랜딩보다 낮다 BECAUSE 이탈 단계가 적다</td><td class="l" style="font-size:6.5pt;">리드폼 4건/287K=71,938원 vs 랜딩 GA전환. 데이터 누적 필요.</td></tr>
+<tr><td><span class="tag tag-p1">실패</span></td><td class="l">네이버SA 전환 확대</td><td class="l" style="font-size:6.5pt;">IF 네이버SA에 예산을 배분하면 THEN 전환이 발생한다 BECAUSE 검색 의도가 명확하다</td><td class="l" style="font-size:6.5pt;">7주차 전환 0건. CPC 955원으로 비효율. 키워드 재검토 필요.</td></tr>
+</table>
+</div>
+
+<!-- S7~S8 -->
+<div class="page">
+<div class="sh"><span class="num">S7</span><span class="title">바이럴 성과 요약</span></div>
+<table>
+<tr><th>채널</th><th>7주차 세션</th><th>전환 기여</th><th>비고</th></tr>
+<tr><td class="l">아프니까사장이다</td><td>확인 필요</td><td>간접 기여</td><td>GA 소스에서 직접 유입 미확인</td></tr>
+<tr><td class="l">네이버 카페 바이럴 외주</td><td>확인 필요</td><td>간접 기여</td><td>direct 유입 증감으로 간접 추정</td></tr>
+</table>
+<p class="mu" style="font-size:6.5pt;">※ 바이럴 성과는 GA에서 직접 트래킹이 어려워 간접 효과로만 추정 가능</p>
+
+<div class="sh"><span class="num">S8</span><span class="title">심층 인사이트 (5가지 핵심 발견)</span></div>
+
+<div class="insight">
+<b>1. 광고비 축소가 효율 개선으로 이어짐:</b> 메타 광고비를 58% 줄였으나 결과당 비용은 31% 개선(185K→128K). 6주차 280만원은 과잉 집행 구간이었을 가능성. 주당 100~150만원이 현재 타겟 풀 대비 적정 구간으로 판단.
+</div>
+<div class="insight">
+<b>2. 메타 리드폼이 전환 핵심 채널:</b> 누적 메타리드 31건(전체 56건의 55.4%). 리드폼 결과당 비용 약 72K원으로 랜딩 전환 대비 우수. 리드폼 소재 비중 확대 검토 필요.
+</div>
+<div class="insight">
+<b>3. 네이버SA 전환 부진 지속:</b> 누적 1건(전체의 1.8%). 주당 2만원 수준 예산으로는 볼륨 자체가 부족. 전환 키워드가 확인되지 않아 비용 대비 효과 의문.
+</div>
+<div class="insight">
+<b>4. 쿠팡 소스 분리 필요성 재확인:</b> 누적 쿠팡 제외 전환 5건. form_start 중 쿠팡 1,138건으로 전체의 22%를 차지. 쿠팡 팝업 혼입이 데이터를 왜곡하므로 지속 모니터링 필요.
+</div>
+<div class="insight">
+<b>5. 차액가맹금 CRM(카카오 알림톡) 전환 발생:</b> 누적 2건. 비광고 채널에서 전환이 발생하기 시작. 기존 DB를 활용한 리마케팅 효과로 판단. 알림톡 캠페인 확대 고려.
+</div>
+</div>
+
+<!-- S9. 채널별 심층 진단 -->
+<div class="page">
+<div class="sh"><span class="num">S9</span><span class="title">채널별 심층 진단</span></div>
+
+<div class="sub-h sub-meta">메타 심층 진단</div>
+<div class="insight">
+<b>핵심 소재 성과:</b> closed_leadform이 리드폼 전환의 핵심(4건). rights_traffic은 클릭 최다이나 전환 미발생. margin_leadform은 전환 0건 — 즉시 중단 또는 소재 교체 필요.<br><br>
+<b>CTR 추이:</b> 1주차 1.60% → 3주차 1.69% → 5주차 2.16% → 6주차 2.30% → 7주차 2.85%. 점진적 상승 추세. 광고비 축소로 고반응 타겟에 집중된 효과.<br><br>
+<b>핵심 과제:</b> ① margin_leadform 중단 검토 ② 주당 100~150만원 예산에서 전환 최적화 ③ 새 소재 테스트 (사례 중심 크리에이티브)
+</div>
+
+<div class="sub-h sub-naver">네이버SA 심층 진단</div>
+<div class="insight">
+<b>채널 현황:</b> 주당 2만원 수준 소규모 집행. 누적 전환 1건(5주차). 7주차 전환 0건.<br><br>
+<b>비용 누수:</b> 검색어별 시트에서 "쿠팡", "SKT", "개인정보유출" 등 비관련 검색어 유입 확인 필요. 확장 매칭으로 비관련 키워드 유입 시 제외 키워드 추가 필요.<br><br>
+<b>핵심 과제:</b> ① 비관련 검색어 제외 키워드 추가 ② 전환 키워드 식별 후 해당 키워드 입찰가 상향 ③ 예산 규모 자체가 작아 전환 기대 어려움 — 예산 증액 또는 채널 재검토
+</div>
+
+<div class="sub-h sub-karrot">당근 심층 진단</div>
+<div class="insight">
+<b>현황:</b> 3/20부터 광고 중단. 6주차 이후 데이터 없음.<br>
+<b>중단 사유:</b> 전환 0건(누적), CPC 대비 성과 부재. 타겟 특성상 프랜차이즈 가맹점주 도달에 한계.<br>
+<b>향후:</b> 별도 재개 계획 없음. 예산은 메타에 집중 배분.
+</div>
+</div>
+
+<!-- S10. 향후 전략 제언 -->
+<div class="page">
+<div class="sh"><span class="num">S10</span><span class="title">향후 전략 제언</span></div>
+<div class="insight">
+<b>전략 방향:</b> 메타 리드폼 중심 전환 확보 체제를 유지하되, 주당 100~150만원 예산 구간에서 효율 극대화. 네이버SA는 소규모 유지하면서 전환 키워드 발굴에 집중. 비광고 채널(CRM 알림톡)을 통한 전환 보완.
+</div>
+
+<p style="margin-top:12px;"><span class="tag tag-p1">P1 즉시</span></p>
+<p><b>margin_leadform 소재 중단:</b> 7주차 전환 0건. 해당 예산(약 17만원/주)을 closed_leadform으로 재배분. 근거: 결과당 비용 무한대 vs closed_leadform 71,938원.</p>
+<p><b>네이버SA 비관련 검색어 제외:</b> 검색어 리포트 확인 후 "쿠팡", "SKT", "개인정보" 등 비관련 검색어 제외 키워드 등록. 비용 누수 차단.</p>
+<p><b>GA 전환 데이터 정합성 점검:</b> 집단소송플랫폼과 테스트페이지 간 중복 전환 여부 확인. 쿠팡 소스 필터 정상 작동 확인.</p>
+
+<p style="margin-top:12px;"><span class="tag tag-p2">P2 1~2주 내</span></p>
+<p><b>메타 새 소재 테스트:</b> 실제 사례 기반 크리에이티브(예: "A브랜드 가맹점주, 차액가맹금 3,200만원 반환 확정") A/B 테스트. 현재 소재 피로도 누적 가능성.</p>
+<p><b>카카오 알림톡 캠페인 확대:</b> CRM 전환 2건 발생 확인. 미제출 대상자 리마인드 + 신규 DB 대상 초기 안내 알림톡 추가 발송.</p>
+<p><b>테스트 페이지(0306) 트래픽 확대:</b> 개인정보동의 단계 추가 폼의 전환율 검증을 위해 메타 트래픽 일부 배분.</p>
+
+<p style="margin-top:12px;"><span class="tag tag-p3">P3 중기</span></p>
+<p><b>네이버SA 예산 구조 재검토:</b> 현재 주 2만원으로는 유의미한 데이터 수집 불가. 주 10만원으로 증액하여 2주간 전환 테스트 후 존폐 결정.</p>
+<p><b>리드폼 vs 랜딩 전환 구조 최적화:</b> 메타 리드폼 비중을 70%까지 확대하되, 랜딩 페이지 전환 퍼널(form_start→최종제출) 이탈 구간 개선 병행.</p>
+<p><b>쿠팡 소스 완전 분리 체계 구축:</b> GA 필터 + 보고서 자동화에서 쿠팡 소스를 100% 분리. 향후 쿠팡 전용 대시보드 별도 운영 검토.</p>
+
+<!-- 경고 박스 -->
+<div class="warn">
+<div class="warn-title">데이터 주의사항</div>
+<p>1. 2월까지 GA 데이터에 자사 IP 미필터 — 2월 데이터 해석 시 감안<br>
+2. 쿠팡 소스(home/popup_coupang) 전환 5건 제외 처리<br>
+3. 차액가맹금 CRM(utm_medium=crm_at_franchise) 2건 포함<br>
+4. 당근광고 3/20~ 중단, 6주차 이후 데이터 없음<br>
+5. 전환수 모수 극소(주당 10건 미만) — 추세 해석 시 통계적 유의성 제한</p>
+</div>
+
+<div class="footer">에이아이컨실리움 | 법무법인 더 에이치 황해 — CONFIDENTIAL | 작성일 2026-03-30</div>
+</div>
+
+</body>
+</html>

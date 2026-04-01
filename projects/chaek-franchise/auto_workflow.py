@@ -77,25 +77,48 @@ def determine_mode():
 # ========== STEP 1: Raw 데이터 입력 ==========
 def step1(xlsx_path):
     print("=== STEP 1: Raw 데이터 입력 ===")
-    wb = openpyxl.load_workbook(xlsx_path, read_only=True, data_only=True)
     
-    def fmt_val(val):
-        if val is None: return ''
-        if isinstance(val, (datetime, date)): return val.strftime('%Y-%m-%d')
-        return val
-
+    COL_MAP = {
+        "집단소송플랫폼_애널리틱스_Raw": ["날짜","이벤트 이름","세션 소스/매체","세션 캠페인","총 사용자","이벤트 수","활성 사용자당 이벤트 수","평균 세션 시간","이탈률","참여율","방문수"],
+        "차액가맹금테스트페이지_애널리틱스_Raw": ["날짜","이벤트 이름","세션 소스/매체","세션 캠페인","총 사용자","이벤트 수","활성 사용자당 이벤트 수","평균 세션 시간","이탈률","참여율","방문수"],
+        "메타광고_Raw": ["캠페인 이름","광고 세트 이름","광고 이름","일","게재 상태","게재 수준","지출 금액 (KRW)","결과 유형","결과","결과당 비용","노출","도달","빈도","CPM(1,000회 노출당 비용)","CTR(전체)","시작","종료","링크 클릭","CPC(링크 클릭당 비용)","결과 비율","CTR(링크 클릭률)","랜딩 페이지 조회","링크 클릭당 랜딩 페이지 조회율","보고 시작","보고 종료"],
+        "네이버검색광고(광고그룹별)_Raw": ["캠페인유형","캠페인","일별","광고그룹","노출수","클릭수","클릭률(%)","평균 CPC","총비용"],
+        "네이버검색광고(키워드별)_Raw": ["캠페인","광고그룹","키워드","일별","노출수","클릭수","클릭률(%)","평균 CPC","총비용","평균노출순위"],
+        "네이버검색광고(소재별)_Raw": ["캠페인","광고그룹","소재","소재 유형","일별","노출수","클릭수","클릭률(%)","평균 CPC","총비용","총 전환수","직접전환수","간접전환수","총 전환율(%)"],
+        "네이버검색광고(검색어별)_Raw": ["검색어","검색 유형","일별","캠페인","광고그룹","노출수","클릭수","클릭률(%)","평균 CPC","총비용","평균노출순위"],
+    }
+    
     payload = {"sheets": []}
-    for name in TARGET_SHEETS:
-        if name not in wb.sheetnames: continue
-        ws = wb[name]
-        rows = list(ws.iter_rows(values_only=True))
-        if len(rows) <= 1: continue
-        data = [r for r in rows[1:] if r and any(c is not None and str(c).strip() != '' for c in r)]
-        if not data: continue
-        formatted = [[fmt_val(c) for c in row] for row in data]
-        payload["sheets"].append({"name": name, "data": formatted})
-        print(f"  {name}: {len(formatted)}행")
-    wb.close()
+    
+    if xlsx_path.endswith('.json'):
+        # JSON 입력
+        with open(xlsx_path, 'r') as f:
+            raw = json.load(f)
+        for name in TARGET_SHEETS:
+            rows_json = raw.get("data", {}).get(name, [])
+            if not rows_json: continue
+            cols = COL_MAP.get(name, list(rows_json[0].keys()))
+            data = [[row.get(c, '') for c in cols] for row in rows_json]
+            payload["sheets"].append({"name": name, "data": data})
+            print(f"  {name}: {len(data)}행")
+    else:
+        # 엑셀 입력
+        wb = openpyxl.load_workbook(xlsx_path, read_only=True, data_only=True)
+        def fmt_val(val):
+            if val is None: return ''
+            if isinstance(val, (datetime, date)): return val.strftime('%Y-%m-%d')
+            return val
+        for name in TARGET_SHEETS:
+            if name not in wb.sheetnames: continue
+            ws = wb[name]
+            rows = list(ws.iter_rows(values_only=True))
+            if len(rows) <= 1: continue
+            data = [r for r in rows[1:] if r and any(c is not None and str(c).strip() != '' for c in r)]
+            if not data: continue
+            formatted = [[fmt_val(c) for c in row] for row in data]
+            payload["sheets"].append({"name": name, "data": formatted})
+            print(f"  {name}: {len(formatted)}행")
+        wb.close()
 
     resp = requests.post(WEBAPP_URL, json=payload, timeout=120)
     result = resp.json()
@@ -586,20 +609,25 @@ def add_report_row(target_date, title, url, note):
 # ========== 종합피벗 시트 업데이트 ==========
 def update_pivot_sheet(tsv_path):
     if not tsv_path: return
-    print(f"\n=== 종합피벗 시트 업데이트 ===")
+    print(f"\n=== 종합피벗 시트 업데이트 (API) ===")
+    
+    with open(tsv_path, 'r') as f:
+        lines = f.read().strip().split('\n')
+    
+    data = [line.split('\t') for line in lines]
+    for i in range(len(data)):
+        while len(data[i]) < 30:
+            data[i].append('')
     
     try:
-        from selenium import webdriver
-    except:
-        pass
-    
-    # 브라우저 paste는 OpenClaw browser tool이 필요하므로
-    # 여기서는 TSV를 생성만 하고, 메인 에이전트가 browser tool로 paste + formatPivot 실행
-    # 자동화를 위해 Apps Script에 전체 교체 기능 추가 필요
-    
-    # 현재는 TSV 파일 경로만 출력하여 수동 또는 에이전트가 처리
-    print(f"  TSV 파일: {tsv_path}")
-    print(f"  → 에이전트가 브라우저로 paste + formatPivot 실행 예정")
+        resp = requests.post(WEBAPP_URL, json={'action': 'updatePivot', 'data': data}, timeout=300)
+        result = resp.json()
+        if result.get('success'):
+            print(f"  ✅ 종합피벗 업데이트 완료: {result.get('rows', 0)}행 + 서식 적용")
+        else:
+            print(f"  ❌ 실패: {result.get('error', 'unknown')}")
+    except Exception as e:
+        print(f"  ⚠️ 종합피벗 업데이트 타임아웃 (서버에서 처리 중일 수 있음): {e}")
 
 # ========== MAIN ==========
 def run(xlsx_path):
