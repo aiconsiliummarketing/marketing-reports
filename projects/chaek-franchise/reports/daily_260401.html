@@ -1,91 +1,215 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>차액가맹금 데일리 리포트 2026.04.01</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>차액가맹금 마케팅 데일리 리포트 | 2026.04.01</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans KR',system-ui,sans-serif;color:#1E293B;background:#F8FAFC;line-height:1.6}.wrap{max-width:800px;margin:0 auto;background:#fff}
-.cover{background:linear-gradient(135deg,#1E293B,#0F172A);color:#fff;padding:48px 40px 36px}.cover .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}.cover .logo{font-size:8pt;color:#94A3B8;letter-spacing:1px}.cover .badge{background:#7B68AE;font-size:7pt;padding:3px 12px;border-radius:10px;letter-spacing:1.5px;text-transform:uppercase}.cover h1{font-size:22pt;font-weight:900;line-height:1.2;margin-bottom:4px}.cover .sub{font-size:10pt;color:#94A3B8;font-weight:300;margin-bottom:20px}.cover .divider{width:36px;height:2px;background:#7B68AE;margin:18px 0 24px}.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi-card{background:rgba(255,255,255,.05);border-radius:8px;padding:14px 12px;border-left:3px solid #7B68AE}.kpi-card .lb{font-size:6.5pt;color:#94A3B8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}.kpi-card .vl{font-size:18pt;font-weight:700}.kpi-card .ch{font-size:7pt;margin-top:3px}.cover .meta{font-size:7pt;color:#475569;margin-top:24px;line-height:1.8}.up{color:#DC2626}.dn{color:#2563EB}.mu{color:#94A3B8}
-.body{padding:28px 40px 40px}.sh{background:#1E293B;border-radius:4px;padding:8px 14px;margin:22px 0 12px;display:flex;align-items:center;gap:8px}.sh .n{background:#7B68AE;color:#fff;font-size:7.5pt;font-weight:700;padding:2px 9px;border-radius:3px}.sh .t{font-size:10pt;font-weight:700;color:#fff}.ib{border-left:3px solid #7B68AE;background:#F8F7FC;padding:12px 16px;margin:8px 0;border-radius:0 4px 4px 0;font-size:8.5pt;line-height:1.7}
-table{width:100%;border-collapse:collapse;font-size:7.5pt;margin:8px 0}th{background:#1E293B;color:#fff;padding:6px 8px;font-weight:600;font-size:7pt;text-align:center}td{padding:5px 8px;border-bottom:1px solid #E2E8F0;text-align:center}tr:nth-child(even) td{background:#F8FAFC}.gt td{background:#1E293B!important;color:#fff;font-weight:700}td.l{text-align:left}
-.kpi-body{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}.kb{background:#1E293B;border-radius:6px;padding:10px 12px}.kb .lb{font-size:6.5pt;color:#94A3B8}.kb .vl{font-size:14pt;font-weight:700;color:#fff}.kb .ch{font-size:7pt}
-.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:6.5pt;font-weight:700}.p1{background:#FEE2E2;color:#DC2626}.p2{background:#FEF3C7;color:#D97706}.act{margin:10px 0 6px}.act .tt{font-weight:700;font-size:8.5pt;margin-top:4px}.act .ds{font-size:7.5pt;color:#475569;margin-top:2px}
-.warn{background:#FFFBEB;border-left:3px solid #F59E0B;padding:10px 14px;margin:14px 0;border-radius:0 4px 4px 0;font-size:7.5pt}.warn b{color:#D97706;font-size:8pt}.ft{margin-top:32px;padding-top:10px;border-top:1px solid #E2E8F0;font-size:6.5pt;color:#94A3B8;text-align:center}
-.ch-meta{display:inline-block;background:#7B68AE;color:#fff;padding:3px 10px;border-radius:3px;font-size:8pt;font-weight:700;margin:10px 0 6px}
-</style></head><body><div class="wrap">
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;background:#F8FAFC;color:#1E293B;line-height:1.7}
+.report{max-width:800px;margin:0 auto;padding:24px}
+.cover{background:linear-gradient(135deg,#1E293B 0%,#0F172A 100%);color:#fff;border-radius:16px;padding:48px 40px;margin-bottom:32px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:rgba(123,104,174,0.1);border-radius:50%}
+.cover h1{font-size:28px;font-weight:800;margin-bottom:8px;letter-spacing:-0.03em}
+.cover .subtitle{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:32px}
+.kpi-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.kpi-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;text-align:center}
+.kpi-card .label{font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.kpi-card .value{font-size:22px;font-weight:800;letter-spacing:-0.02em}
+.kpi-card .value.purple{color:#A78BFA}
+.cover-meta{font-size:12px;color:rgba(255,255,255,0.4);display:flex;gap:16px;flex-wrap:wrap}
+.section{background:#fff;border-radius:12px;border:1px solid #E2E8F0;padding:32px;margin-bottom:20px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#7B68AE;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px}
+.section-tag::before{content:'';width:16px;height:2px;background:#7B68AE}
+.section h2{font-size:20px;font-weight:800;color:#1E293B;margin-bottom:16px;letter-spacing:-0.02em}
+.section h3{font-size:16px;font-weight:700;color:#1E293B;margin-bottom:12px}
+.highlight-box{background:linear-gradient(135deg,#F8F7FC,#EDE9F6);border-left:4px solid #7B68AE;border-radius:8px;padding:20px 24px;margin-bottom:20px}
+.highlight-box p{font-size:15px;font-weight:600;color:#1E293B}
+.highlight-box .sub{font-size:13px;color:#64748B;margin-top:4px;font-weight:400}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+th{background:#F1F5F9;color:#475569;font-weight:600;padding:10px 12px;text-align:left;border-bottom:2px solid #E2E8F0}
+td{padding:10px 12px;border-bottom:1px solid #F1F5F9;color:#334155}
+tr:hover td{background:#FAFBFC}
+.up{color:#DC2626;font-weight:600}
+.down{color:#2563EB;font-weight:600}
+.tag-meta{background:#EDE9F6;color:#7B68AE;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-naver{background:#DCFCE7;color:#16A34A;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-direct{background:#FEF3C7;color:#D97706;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.metric-item{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px;text-align:center}
+.metric-item .mlabel{font-size:11px;color:#94A3B8;margin-bottom:4px}
+.metric-item .mvalue{font-size:18px;font-weight:800;color:#1E293B}
+.action-item{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid #F1F5F9}
+.action-item:last-child{border-bottom:none}
+.action-tag{flex-shrink:0;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700}
+.p1{background:#FEE2E2;color:#DC2626}
+.p2{background:#FEF3C7;color:#D97706}
+.action-text{font-size:14px;color:#334155}
+.footer{text-align:center;padding:24px;font-size:11px;color:#94A3B8}
+.warn-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:16px;margin:16px 0}
+.warn-box p{font-size:13px;color:#92400E}
+@media(max-width:600px){
+.kpi-cards{grid-template-columns:repeat(2,1fr)}
+.metric-grid{grid-template-columns:1fr}
+.cover{padding:32px 24px}
+.section{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+<div class="report">
+
+<!-- 커버 -->
 <div class="cover">
-<div class="top"><span class="logo">AI Consilium</span><span class="badge">Daily Report</span></div>
-<h1>차액가맹금 집단소송<br>마케팅 데일리 리포트</h1>
-<div class="sub">2026.04.01 (수)</div><div class="divider"></div>
-<div class="kpi-row">
-<div class="kpi-card"><div class="lb">당일 광고비</div><div class="vl">234,659</div><div class="ch up">▲ 5.4% vs 전일</div></div>
-<div class="kpi-card"><div class="lb">당일 클릭</div><div class="vl">1,019</div><div class="ch up">▲ 15.3%</div></div>
-<div class="kpi-card"><div class="lb">CTR</div><div class="vl">3.67%</div><div class="ch dn">▼ 0.2%</div></div>
-<div class="kpi-card"><div class="lb">전환수</div><div class="vl">5건</div><div class="ch up">▲ 400.0%</div></div>
+<h1>차액가맹금 집단소송 마케팅 데일리 리포트</h1>
+<p class="subtitle">2026.04.01 (화) | MODE A 데일리</p>
+<div class="kpi-cards">
+<div class="kpi-card"><div class="label">당일 광고비</div><div class="value">234,659원</div></div>
+<div class="kpi-card"><div class="label">당일 클릭</div><div class="value">1,019</div></div>
+<div class="kpi-card"><div class="label">CTR</div><div class="value purple">3.67%</div></div>
+<div class="kpi-card"><div class="label">전환수</div><div class="value purple">5건</div></div>
 </div>
-<div class="meta">분석 날짜: 2026.04.01 (수) | GA · Meta Ads · Naver SA<br>작성: 에이아이컨실리움 | 수신: 법무법인 더 에이치 황해 | CONFIDENTIAL</div>
+<div class="cover-meta">
+<span>데이터 소스: GA4 + Meta Ads + Naver SA</span>
+<span>작성: 에이아이컨실리움</span>
+<span>STEP 1~3 완료</span>
 </div>
-<div class="body">
+</div>
 
-<div class="sh"><span class="n">D1</span><span class="t">오늘의 핵심 요약 — GA 전환 2건, 메타 리드폼 3건, 총 전환 5건</span></div>
-<div class="ib"><b>종합 평가:</b> 메타 광고비 231,958원. GA 최종제출 2건(비쿠팡). 메타 리드폼 3건. 폼유입 24건. 노출/클릭 전일대비 ▲ 15% 이상 상승.<br><br><b>주요 변화:</b> 신전떡볶이 캠페인 지속 효율. 네이버SA 광고 극소(2,701원). 누적 전환수 5건으로 4/1 최고 일일 전환 기록.</div>
+<!-- D1. 오늘의 핵심 요약 -->
+<div class="section">
+<div class="section-tag">D1</div>
+<h2>메타 신전떡볶이 캠페인, CPC 55원으로 최저가 유입 유지</h2>
+<div class="highlight-box">
+<p>신전떡볶이 슬라이드 캠페인(sinjeon_margin_260327)이 CPC 47원, 랜딩페이지 조회 581건으로 전체 유입의 57%를 차지하며 효율적 볼륨을 견인하고 있습니다.</p>
+<div class="sub">다만 이탈률 100%, 참여율 0%로 유입 품질 개선이 필요합니다.</div>
+</div>
+</div>
 
-<div class="sh"><span class="n">D2</span><span class="t">당일 KPI 스냅샷</span></div>
-<div class="kpi-body">
-<div class="kb"><div class="lb">광고비</div><div class="vl">234,659</div><div class="ch up">▲ 5.4%</div></div>
-<div class="kb"><div class="lb">노출</div><div class="vl">27,741</div><div class="ch up">▲ 15.6%</div></div>
-<div class="kb"><div class="lb">클릭</div><div class="vl">1,019</div><div class="ch up">▲ 15.3%</div></div>
-<div class="kb"><div class="lb">CTR</div><div class="vl">3.67%</div><div class="ch dn">▼ 0.2%</div></div>
-<div class="kb"><div class="lb">CPC</div><div class="vl">230</div><div class="ch dn">▼ 8.3%</div></div>
-<div class="kb"><div class="lb">전환수</div><div class="vl">5건</div><div class="ch up">▲ 400.0%</div></div>
+<!-- D2. 당일 KPI 스냅샷 -->
+<div class="section">
+<div class="section-tag">D2</div>
+<h2>당일 KPI 스냅샷</h2>
+<div class="metric-grid">
+<div class="metric-item"><div class="mlabel">광고비</div><div class="mvalue">234,659원</div></div>
+<div class="metric-item"><div class="mlabel">노출</div><div class="mvalue">27,741</div></div>
+<div class="metric-item"><div class="mlabel">클릭</div><div class="mvalue">1,019</div></div>
+<div class="metric-item"><div class="mlabel">CTR</div><div class="mvalue">3.67%</div></div>
+<div class="metric-item"><div class="mlabel">CPC</div><div class="mvalue">230원</div></div>
+<div class="metric-item"><div class="mlabel">전환</div><div class="mvalue">5건</div></div>
 </div>
 <table>
-<tr><th>지표</th><th>당일 (4/1)</th><th>전일 (3/31)</th><th>전일대비</th></tr>
-<tr><td class="l"><b>광고비</b></td><td>234,659</td><td>222,657</td><td class="up">▲ 5.4%</td></tr>
-<tr><td class="l"><b>노출</b></td><td>27,741</td><td>24,001</td><td class="up">▲ 15.6%</td></tr>
-<tr><td class="l"><b>클릭</b></td><td>1,019</td><td>884</td><td class="up">▲ 15.3%</td></tr>
-<tr><td class="l"><b>CTR</b></td><td>3.67%</td><td>3.68%</td><td class="dn">▼ 0.2%</td></tr>
-<tr><td class="l"><b>CPC</b></td><td>230</td><td>251</td><td class="dn">▼ 8.3%</td></tr>
-<tr><td class="l"><b>전환수</b></td><td>5</td><td>1</td><td class="up">▲ 400.0%</td></tr>
-<tr><td class="l"><b>결과당비용</b></td><td>46,932</td><td>222,657</td><td class="dn">▼ 78.9%</td></tr>
-<tr><td class="l"><b>폼유입</b></td><td>24</td><td>14</td><td class="up">▲ 71.4%</td></tr>
+<tr><th>지표</th><th>4/1 당일</th><th>누적 평균</th><th>비고</th></tr>
+<tr><td>광고비</td><td>234,659원</td><td>~127,000원/일</td><td>평균 대비 높음 (폼 캠페인 다수)</td></tr>
+<tr><td>CTR</td><td>3.67%</td><td>2.14%</td><td class="up">누적 대비 +1.53%p</td></tr>
+<tr><td>CPC</td><td>230원</td><td>317원</td><td class="down">누적 대비 -27% 효율 개선</td></tr>
+<tr><td>전환</td><td>5건</td><td>~1.8건/일</td><td class="up">평균 대비 +178%</td></tr>
+<tr><td>CPA</td><td>46,932원</td><td>72,338원</td><td class="down">누적 대비 -35% 개선</td></tr>
 </table>
+</div>
 
-<div class="sh"><span class="n">D3</span><span class="t">채널별 당일 성과</span></div>
+<!-- D3. 채널별 당일 성과 -->
+<div class="section">
+<div class="section-tag">D3</div>
+<h2>채널별 당일 성과</h2>
 <table>
-<tr><th>채널</th><th>광고비</th><th>비중</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>전환</th><th>결과당비용</th></tr>
-<tr><td class="l"><b>메타</b></td><td>231,958</td><td>98.8%</td><td>27,239</td><td>1,017</td><td>3.73%</td><td>228</td><td>3</td><td>77,319</td></tr>
-<tr><td class="l"><b>네이버SA</b></td><td>2,701</td><td>1.2%</td><td>502</td><td>2</td><td>0.40%</td><td>1,351</td><td>2</td><td>1,351</td></tr>
-<tr><td class="l"><b>당근</b></td><td colspan="8" style="color:#94A3B8;text-align:center">광고 중단 (3/20~)</td></tr>
-<tr class="gt"><td class="l">합계</td><td>234,659</td><td>100%</td><td>27,741</td><td>1,019</td><td>3.67%</td><td>230</td><td>5</td><td>46,932</td></tr>
+<tr><th>채널</th><th>광고비</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>전환</th></tr>
+<tr><td><span class="tag-meta">메타</span></td><td>231,958원</td><td>27,239</td><td>1,017</td><td>3.73%</td><td>228원</td><td>5건</td></tr>
+<tr><td><span class="tag-naver">네이버SA</span></td><td>2,701원</td><td>502</td><td>2</td><td>0.40%</td><td>1,351원</td><td>0건</td></tr>
+<tr style="background:#F1F5F9;font-weight:700"><td>합계</td><td>234,659원</td><td>27,741</td><td>1,019</td><td>3.67%</td><td>230원</td><td>5건</td></tr>
 </table>
-<div class="ib"><b>메타:</b> 메타 리드폼 3건(검증 필요). 신전떡볶이 캠페인 지속 운영. 신규 캠페인 reveal_form 추가.<br><b>네이버SA:</b> CPC 1,351원으로 고가. 일일 클릭 2건만 기록. GA 전환 2건 중 일부 기여로 추정.</div>
+<div class="warn-box"><p>네이버SA: 클릭 2건, 전환 0건. 노출 대비 클릭률 0.4%로 저조. 키워드/소재 점검 필요.</p></div>
+</div>
 
-<div class="sh"><span class="n">D4</span><span class="t">소재별 당일 성과</span></div>
-<div class="ch-meta">메타 — 광고 이름별 성과 (상위 5개)</div>
+<!-- D4. 소재별 당일 성과 -->
+<div class="section">
+<div class="section-tag">D4</div>
+<h2>소재별 당일 성과</h2>
+<h3><span class="tag-meta">메타</span> 주요 소재</h3>
 <table>
-<tr><th>광고 이름</th><th>결과 유형</th><th>광고비</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>결과</th></tr>
-<tr><td class='l'><b>sinjeon_margin_260327</b></td><td>랜딩 페이지 조회</td><td>32,017</td><td>9,504</td><td>680</td><td>7.16%</td><td>47</td><td>581</td></tr>
-<tr><td class='l'><b>margin_260313</b></td><td>랜딩 페이지 조회</td><td>31,544</td><td>6,171</td><td>165</td><td>2.67%</td><td>191</td><td>148</td></tr>
-<tr><td class='l'><b>sinjeon_justice_form_260325</b></td><td>잠재 고객(양식)</td><td>53,179</td><td>3,489</td><td>65</td><td>1.86%</td><td>818</td><td>1</td></tr>
-<tr><td class='l'><b>bhc_active</b></td><td>잠재 고객(양식)</td><td>47,763</td><td>3,291</td><td>32</td><td>0.97%</td><td>1,491</td><td>1</td></tr>
-<tr><td class='l'><b>margin_form_260318</b></td><td>잠재 고객(양식)</td><td>35,366</td><td>1,370</td><td>12</td><td>0.88%</td><td>2,947</td><td>1</td></tr>
+<tr><th>소재</th><th>지출</th><th>노출</th><th>클릭</th><th>CTR</th><th>CPC</th><th>결과</th></tr>
+<tr><td>sinjeon_margin_260327</td><td>32,017원</td><td>9,504</td><td>680</td><td>7.15%</td><td>47원</td><td>LP조회 581</td></tr>
+<tr><td>margin_260313</td><td>31,544원</td><td>6,171</td><td>165</td><td>2.67%</td><td>191원</td><td>LP조회 148</td></tr>
+<tr><td>sinjeon_justice_form_260325</td><td>53,179원</td><td>3,489</td><td>65</td><td>1.86%</td><td>818원</td><td>리드 1건</td></tr>
+<tr><td>bhc_active (폼)</td><td>47,763원</td><td>3,291</td><td>32</td><td>0.97%</td><td>1,493원</td><td>리드 1건</td></tr>
+<tr><td>margin_form_260318 (폼)</td><td>35,366원</td><td>1,370</td><td>12</td><td>0.88%</td><td>2,947원</td><td>리드 1건</td></tr>
+<tr><td>closed_260212</td><td>10,591원</td><td>2,651</td><td>61</td><td>2.30%</td><td>174원</td><td>LP조회 48</td></tr>
+<tr><td>reveal_form_260401 (신규)</td><td>10,343원</td><td>376</td><td>-</td><td>-</td><td>-</td><td>집행 시작</td></tr>
 </table>
-
-<div class="sh"><span class="n">D5</span><span class="t">GA 당일 전환 현황</span></div>
+<h3><span class="tag-naver">네이버SA</span> 주요 그룹</h3>
 <table>
-<tr><th>구분</th><th>form_start</th><th>최종제출</th><th>메타리드</th><th>총 전환</th></tr>
-<tr><td class="l">당일 (4/1)</td><td>24</td><td>2</td><td>3</td><td>5</td></tr>
-<tr><td class="l">전일 (3/31)</td><td>14</td><td>0</td><td>1</td><td>1</td></tr>
-<tr><td class="l">전주대비</td><td class="up">▲ 71.4%</td><td>—</td><td class="up">▲ 200.0%</td><td class="up">▲ 400.0%</td></tr>
+<tr><th>광고그룹</th><th>노출</th><th>클릭</th><th>CTR</th><th>비용</th></tr>
+<tr><td>전체</td><td>200</td><td>1</td><td>0.5%</td><td>1,625원</td></tr>
+<tr><td>더벤티</td><td>15</td><td>1</td><td>6.67%</td><td>1,076원</td></tr>
+<tr><td>이디야</td><td>46</td><td>0</td><td>0%</td><td>0원</td></tr>
 </table>
+</div>
 
-<div class="sh"><span class="n">D8</span><span class="t">당일 인사이트 & 액션</span></div>
-<div class="ib"><b>1. 전환수 5건 기록 (전일 1건 → 4배 증가)</b> — GA 최종제출 2건(비쿠팡 Kakao 소스). 메타 리드폼 3건. 폼유입 24건으로 폼 진입 증가율 71.4%.</div>
-<div class="ib"><b>2. CPC 감소 추세 (251 → 230, ▼ 8.3%)</b> — 클릭 15% 증가 대비 광고비 5% 증가로 효율 개선. 신전떡볶이 캠페인 CTR 7.16% 유지.</div>
-<div class="act"><span class="tag p1">P1 즉시</span><div class="tt">메타 리드폼 3건 검증 필수</div><div class="ds">양식 제출 기준 중복 여부 확인. "실제 신청자 리스트" 시트 대조로 유효성 검증. 마진율 캠페인에서 리드폼 발생 원인 파악.</div></div>
-<div class="act"><span class="tag p2">P2 내일</span><div class="tt">GA 최종제출 2건 출처 추적</div><div class="ds">Kakao/kakao_menu(차액가맹금신청바로가기_260223)에서 1건, (not set)에서 1건. 세션 경로 분석으로 캠페인 기여도 확인.</div></div>
-<div class="act"><span class="tag p2">P2 내일</span><div class="tt">고가 소재(margin_form, target, bhc_active) 효율 재검토</div><div class="ds">bhc_active(CPC 1,491원), margin_form(CPC 2,947원)은 전환 1건씩만 기록. CPA 최적화 필요.</div></div>
+<!-- D5. 전환 & 퍼널 -->
+<div class="section">
+<div class="section-tag">D5</div>
+<h2>전환 & 퍼널</h2>
+<div class="highlight-box">
+<p>당일 전환 5건 (GA 2건 + 메타 리드폼 3건)</p>
+<div class="sub">폼유입(form_start) 24건 → 전환 5건 = 전환율 20.8%</div>
+</div>
+<table>
+<tr><th>전환 경로</th><th>건수</th><th>비고</th></tr>
+<tr><td>GA 최종제출 - Kakao/차액가맹금신청</td><td>2건</td><td>카카오 메뉴 유입</td></tr>
+<tr><td>메타 리드폼 - sinjeon_justice_form</td><td>1건</td><td>CPA 53,179원</td></tr>
+<tr><td>메타 리드폼 - bhc_active</td><td>1건</td><td>CPA 47,763원</td></tr>
+<tr><td>메타 리드폼 - margin_form_260318</td><td>1건</td><td>CPA 35,366원</td></tr>
+</table>
+<h3>폼 퍼널 스냅샷 (4/1)</h3>
+<table>
+<tr><th>단계</th><th>건수</th><th>전환율</th></tr>
+<tr><td>form_start</td><td>24건</td><td>-</td></tr>
+<tr><td>01.이름작성</td><td>3건</td><td>12.5%</td></tr>
+<tr><td>02.전화번호</td><td>3건</td><td>100%</td></tr>
+<tr><td>03.브랜드명</td><td>3건</td><td>100%</td></tr>
+<tr><td>04.최종제출</td><td>2건</td><td>66.7%</td></tr>
+</table>
+</div>
 
-<div class="warn"><b>데이터 주의사항</b><br>메타 리드폼 3건 미검증 · GA 최종제출 2건만 확정 · 쿠팡 제외 · CRM 포함 · 모수 극소</div>
-<div class="ft">에이아이컨실리움 | 법무법인 더 에이치 황해 — CONFIDENTIAL | 2026-04-02</div>
-</div></div></body></html>
+<!-- D6. 가설 추적 -->
+<div class="section">
+<div class="section-tag">D6</div>
+<h2>가설 추적 상태</h2>
+<table>
+<tr><th>가설</th><th>상태</th><th>4/1 결과</th></tr>
+<tr><td>신전떡볶이 슬라이드 소재가 CPC 최저로 볼륨 확보 가능</td><td style="color:#16A34A;font-weight:700">검증 중 (유효)</td><td>CPC 47원, LP조회 581건 달성</td></tr>
+<tr><td>메타 리드폼이 GA 전환보다 CPA 효율적</td><td style="color:#D97706;font-weight:700">검증 중</td><td>리드폼 3건 vs GA 2건. 리드폼 CPA 평균 45,436원</td></tr>
+<tr><td>네이버SA 브랜드 키워드가 전환 기여</td><td style="color:#DC2626;font-weight:700">미검증</td><td>클릭 2건, 전환 0건</td></tr>
+</table>
+</div>
+
+<!-- D8. 당일 인사이트 & 액션 -->
+<div class="section">
+<div class="section-tag">D8</div>
+<h2>당일 인사이트 & 액션</h2>
+<div class="action-item">
+<span class="action-tag p1">P1</span>
+<div class="action-text"><strong>신규 폼 캠페인(reveal_form_260401, royalty_form_260401) 초기 성과 모니터링.</strong> 아직 결과 없음. 2~3일 내 결과 발생 여부 확인 후 예산 조정.</div>
+</div>
+<div class="action-item">
+<span class="action-tag p1">P1</span>
+<div class="action-text"><strong>신전떡볶이 슬라이드 소재 이탈률 100% 개선.</strong> LP조회 581건 중 참여 0건. 랜딩페이지 콘텐츠/CTA 위치 점검 필요.</div>
+</div>
+<div class="action-item">
+<span class="action-tag p2">P2</span>
+<div class="action-text"><strong>네이버SA 키워드 구조 재검토.</strong> 노출 502, 클릭 2건. 비효율 키워드 정리 및 전환 키워드 집중 필요.</div>
+</div>
+<div class="action-item">
+<span class="action-tag p2">P2</span>
+<div class="action-text"><strong>폼 퍼널 이름작성 단계 전환율 12.5% 개선.</strong> form_start 24건 중 이름작성 3건. 폼 UI/UX 또는 첫 입력 필드 간소화 검토.</div>
+</div>
+</div>
+
+<div class="footer">
+&copy; 2026 에이아이컨실리움 | 법무법인 더 에이치 황해 마케팅팀<br>
+데이터 소스: Google Analytics 4, Meta Ads Manager, Naver Search Ads
+</div>
+
+</div>
+</body>
+</html>
